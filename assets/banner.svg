@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%" style="background:#0d1117; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#070a12" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="pillGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2937" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#111827" stop-opacity="0.9" />
+    </linearGradient>
+
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Animations -->
+    <style>
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.15); opacity: 1; }
+      }
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) translateX(0px); }
+        50% { transform: translateY(-8px) translateX(5px); }
+      }
+      @keyframes floatFast {
+        0%, 100% { transform: translateY(0px) translateX(0px); }
+        50% { transform: translateY(-14px) translateX(-6px); }
+      }
+      @keyframes waveDash {
+        to { stroke-dashoffset: -40; }
+      }
+      @keyframes orbit {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .node-pulse {
+        animation: pulse 3s ease-in-out infinite;
+        transform-origin: center;
+      }
+      .float-elem-1 {
+        animation: floatSlow 6s ease-in-out infinite;
+      }
+      .float-elem-2 {
+        animation: floatFast 5s ease-in-out infinite;
+      }
+      .network-line {
+        stroke-dasharray: 6 6;
+        animation: waveDash 2.5s linear infinite;
+      }
+      .badge-hover {
+        transition: all 0.3s ease;
+      }
+    </style>
+  </defs>
+
+  <!-- Deep Canvas Base -->
+  <rect width="1200" height="380" fill="url(#bgGrad)" />
+
+  <!-- Dynamic Ambient Glow Spots (Background) -->
+  <circle cx="200" cy="100" r="180" fill="url(#glowGrad)" />
+  <circle cx="1050" cy="280" r="220" fill="url(#glowGrad)" />
+
+  <!-- Geometric Grid Accent (Subtle) -->
+  <g opacity="0.07" stroke="#94a3b8" stroke-width="1">
+    <line x1="0" y1="60" x2="1200" y2="60" />
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="180" x2="1200" y2="180" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="200" y1="0" x2="200" y2="380" />
+    <line x1="400" y1="0" x2="400" y2="380" />
+    <line x1="600" y1="0" x2="600" y2="380" />
+    <line x1="800" y1="0" x2="800" y2="380" />
+    <line x1="1000" y1="0" x2="1000" y2="380" />
+  </g>
+
+  <!-- Dynamic Collaboration Network Layer (Behind text, around margins) -->
+  <g id="dynamic-network">
+    <!-- Animated Connecting Mesh Lines -->
+    <path class="network-line" d="M 80 120 Q 180 70 280 130 T 420 100" fill="none" stroke="#6366f1" stroke-width="1.8" opacity="0.45" />
+    <path class="network-line" d="M 780 100 Q 920 60 1060 110 T 1140 180" fill="none" stroke="#8b5cf6" stroke-width="1.8" opacity="0.45" />
+    <path class="network-line" d="M 900 290 Q 1020 330 1120 280" fill="none" stroke="#ec4899" stroke-width="1.8" opacity="0.4" />
+    <path class="network-line" d="M 80 270 Q 180 320 300 280" fill="none" stroke="#3b82f6" stroke-width="1.8" opacity="0.4" />
+
+    <!-- Animated Floating Network Nodes & Icons -->
+    <g class="float-elem-1">
+      <circle cx="120" cy="110" r="16" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" />
+      <circle cx="120" cy="110" r="5" fill="#a5b4fc" class="node-pulse" />
+      <!-- Message symbol -->
+      <path d="M 115 107 h 10 a 2 2 0 0 1 2 2 v 5 a 2 2 0 0 1 -2 2 h -5 l -3 3 v -3 h -2 a 2 2 0 0 1 -2 -2 v -5 a 2 2 0 0 1 2 -2 z" fill="#c7d2fe" />
+    </g>
+
+    <g class="float-elem-2">
+      <circle cx="1080" cy="100" r="18" fill="#2e1065" stroke="#a855f7" stroke-width="2" />
+      <circle cx="1080" cy="100" r="6" fill="#d8b4fe" class="node-pulse" />
+      <!-- Users symbol -->
+      <circle cx="1077" cy="97" r="3" fill="#e9d5ff" />
+      <path d="M 1072 105 a 5 5 0 0 1 10 0" fill="none" stroke="#e9d5ff" stroke-width="1.5" />
+    </g>
+
+    <g class="float-elem-1">
+      <circle cx="95" cy="275" r="14" fill="#0c4a6e" stroke="#38bdf8" stroke-width="2" />
+      <circle cx="95" cy="275" r="4" fill="#7dd3fc" class="node-pulse" />
+    </g>
+
+    <g class="float-elem-2">
+      <circle cx="1110" cy="285" r="16" fill="#4c0519" stroke="#f43f5e" stroke-width="2" />
+      <circle cx="1110" cy="285" r="5" fill="#fda4af" class="node-pulse" />
+    </g>
+
+    <!-- Orbital Ring Accent Right -->
+    <circle cx="1020" cy="210" r="55" fill="none" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4 8" opacity="0.35" />
+    <circle cx="180" cy="200" r="45" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="4 6" opacity="0.35" />
+  </g>
+
+  <!-- FOREGROUND LAYER (Guaranteed Crystal Clear Visibility & Hierarchy) -->
+  <g id="foreground" transform="translate(0, 0)">
+    
+    <!-- Top Category Pill / Live Status -->
+    <g transform="translate(600, 52)">
+      <rect x="-190" y="-16" width="380" height="32" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <circle cx="-165" cy="0" r="5" fill="#10b981" class="node-pulse" />
+      <text x="-148" y="5" fill="#94a3b8" font-size="12" font-weight="600" letter-spacing="1.5">ENTERPRISE COLLABORATION ECOSYSTEM</text>
+    </g>
+
+    <!-- Main Title with Gradient Fill -->
+    <text x="600" y="135" text-anchor="middle" font-size="44" font-weight="800" letter-spacing="-0.5" fill="#ffffff" filter="drop-shadow(0 2px 12px rgba(0,0,0,0.8))">
+      Awesome Enterprise Social Collaboration
+    </text>
+
+    <!-- Colorful Subtitle Bar -->
+    <text x="600" y="178" text-anchor="middle" font-size="19" font-weight="500" fill="#93c5fd" letter-spacing="0.3">
+      Team Communication • Social Intranets • Digital Workplaces • Knowledge Hubs
+    </text>
+
+    <!-- Descriptive Mission Tagline -->
+    <text x="600" y="212" text-anchor="middle" font-size="14" font-weight="400" fill="#94a3b8" letter-spacing="0.2">
+      Curated market intelligence for Fortune 500 SaaS, self-hosted open-source stacks &amp; sovereign infrastructure
+    </text>
+
+    <!-- Foreground Feature Badges / Cards (Clean, readable, high contrast) -->
+    <g transform="translate(600, 275)">
+      <!-- Card 1: SaaS Market Leaders -->
+      <g transform="translate(-390, 0)">
+        <rect x="0" y="0" width="180" height="42" rx="10" fill="#161b26" stroke="#2563eb" stroke-width="1.2" />
+        <text x="90" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#60a5fa">🏢 SaaS Leaders</text>
+      </g>
+
+      <!-- Card 2: Open Source & Self-Hosted -->
+      <g transform="translate(-195, 0)">
+        <rect x="0" y="0" width="180" height="42" rx="10" fill="#161b26" stroke="#9333ea" stroke-width="1.2" />
+        <text x="90" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#c084fc">🔓 Open-Source</text>
+      </g>
+
+      <!-- Card 3: Internal Social Networks -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="180" height="42" rx="10" fill="#161b26" stroke="#059669" stroke-width="1.2" />
+        <text x="90" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#34d399">🌐 Social Intranet</text>
+      </g>
+
+      <!-- Card 4: Frontline & Team Chat -->
+      <g transform="translate(195, 0)">
+        <rect x="0" y="0" width="180" height="42" rx="10" fill="#161b26" stroke="#db2777" stroke-width="1.2" />
+        <text x="90" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#f472b6">💬 Frontline &amp; Chat</text>
+      </g>
+    </g>
+
+    <!-- Bottom Border Gradient Ribbon -->
+    <rect x="0" y="374" width="1200" height="6" fill="url(#accentGrad)" />
+  </g>
+</svg>
